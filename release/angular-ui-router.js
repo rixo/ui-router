@@ -2324,9 +2324,9 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
     if (states.hasOwnProperty(name)) throw new Error("State '" + name + "'' is already defined");
 
     // Get parent name
-    var parentName = (name.indexOf('.') !== -1) ? name.substring(0, name.lastIndexOf('.'))
-        : (isString(state.parent)) ? state.parent
+    var parentName = (isString(state.parent)) ? state.parent
         : (isObject(state.parent) && isString(state.parent.name)) ? state.parent.name
+        : (name.indexOf('.') !== -1) ? name.substring(0, name.lastIndexOf('.'))
         : '';
 
     // If parent is not registered yet, add state to queue and register later
